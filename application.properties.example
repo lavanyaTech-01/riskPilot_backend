@@ -1,0 +1,55 @@
+# Example Configuration File
+# Copy this file to src/main/resources/application.properties and fill in your credentials
+
+spring.application.name=RiskPilot
+spring.datasource.url=jdbc:postgresql://localhost:5432/riskPilot
+spring.datasource.username=postgres
+spring.datasource.password=YOUR_DATABASE_PASSWORD_HERE
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.hikari.auto-commit=false
+
+# Hibernate DDL Generation
+spring.jpa.generate-ddl=true
+spring.jpa.properties.hibernate.generate_statistics=false
+
+## Gemini API Configuration
+# Replace with your actual Gemini API key from https://aistudio.google.com/app/apikeys
+gemini.api.key=YOUR_GEMINI_API_KEY_HERE
+spring.ai.google.ai.gemini.api-key=YOUR_GEMINI_API_KEY_HERE
+spring.ai.google.ai.gemini.model=gemini-2-flash
+
+# VirusTotal API Configuration
+# Get your key from https://www.virustotal.com/
+virustotal.api.key=YOUR_VIRUSTOTAL_API_KEY_HERE
+
+# OAuth2 Configuration - Google
+# Get credentials from https://console.cloud.google.com/
+spring.security.oauth2.client.registration.google.client-id=YOUR_GOOGLE_CLIENT_ID_HERE.apps.googleusercontent.com
+spring.security.oauth2.client.registration.google.client-secret=YOUR_GOOGLE_CLIENT_SECRET_HERE
+spring.security.oauth2.client.registration.google.scope=profile,email
+spring.security.oauth2.client.registration.google.redirect-uri=http://localhost:8080/login/oauth2/code/google
+
+# OAuth2 Provider Configuration
+spring.security.oauth2.client.provider.google.token-uri=https://oauth2.googleapis.com/token
+spring.security.oauth2.client.provider.google.authorization-uri=https://accounts.google.com/o/oauth2/v2/auth
+spring.security.oauth2.client.provider.google.user-info-uri=https://openidconnect.googleapis.com/v1/userinfo
+spring.security.oauth2.client.provider.google.user-name-attribute=sub
+
+# OAuth2 Logging
+logging.level.org.springframework.security.oauth2=INFO
+logging.level.org.springframework.security.oauth2.client=INFO
+
+# JWT Configuration
+# Generate a strong secret key (at least 256 bits / 32 characters)
+jwt.secret.key=YOUR_SUPER_SECRET_JWT_KEY_THAT_IS_AT_LEAST_256_BITS_LONG_SHOULD_BE_VERY_RANDOM
+
+# Multipart File Upload Configuration
+spring.servlet.multipart.enabled=true
+spring.servlet.multipart.max-file-size=10MB
+spring.servlet.multipart.max-request-size=10MB
+spring.servlet.multipart.file-size-threshold=2KB
+spring.servlet.multipart.location=/tmp
